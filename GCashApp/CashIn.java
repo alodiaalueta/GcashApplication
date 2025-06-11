@@ -12,7 +12,7 @@ public class CashIn {
         ArrayList<UserAuthentication.User> users = UserAuthentication.getUsers();
         UserAuthentication.User current = UserAuthentication.currentUser;
 
-        // Always go straight to this:
+        
         System.out.println("\n CASH IN FROM ");
         System.out.print("Enter Account ID: ");
         String accId = scanner.nextLine().trim();
@@ -42,19 +42,19 @@ public class CashIn {
                 return;
             }
 
-            // Deduct from source
+            
             found.subtractBalance(amount);
 
-            // Add to current user
+            
             current.addBalance(amount);
 
-            // Record transaction
+           
             transactions.add(new Transaction(
                 amount,
                 current.getName(),
                 current.getAccountId(),
-                current.getId(),     // transferTo: current user
-                found.getId(),       // transferFrom: source
+                current.getId(),     
+                found.getId(),       
                 "CASH_IN"
             ));
             System.out.println("Cash In Successful!");

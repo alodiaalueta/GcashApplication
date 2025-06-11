@@ -50,8 +50,8 @@ public class CashTransfer {
                 amount,
                 recipient.getName(),
                 recipient.getAccountId(),
-                recipient.getId(),   // transferTo
-                sender.getId(),      // transferFrom
+                recipient.getId(),   
+                sender.getId(),      
                 "CASH_TRANSFER"
             ));
             System.out.println("Cash Transfer Successful!");

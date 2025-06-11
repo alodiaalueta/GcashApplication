@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public class Transactions {
     public static void displayTransactions(ArrayList<Transaction> transactions) {
-        System.out.println("\n  TRANSACTION HISTORY \n");
-        System.out.printf("%-10s %-15s %-20s %-15s%n",
+        System.out.println("\n===========================");
+        System.out.println("    ~ TRANSACTION HISTORY ~");
+        System.out.println("===========================");
+        System.out.printf("%-15s %-20s %-25s %-20s%n",
             "Amount", "Type", "Recipient Email", "Status");
 
         String me = UserAuthentication.currentUser.getId();

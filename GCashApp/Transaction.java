@@ -11,7 +11,7 @@ public class Transaction {
 
     public Transaction(double amount, String recipientName, String recipientAccountId,
                        String transferToId, String transferFromId, String type) {
-        this.id = "TX" + System.currentTimeMillis(); // Unique ID based on timestamp
+        this.id = "TX" + System.currentTimeMillis(); 
         this.amount = amount;
         this.recipientName = recipientName;
         this.recipientAccountId = recipientAccountId;
@@ -20,7 +20,7 @@ public class Transaction {
         this.type = type;
     }
 
-    // Getters
+    
     public String getId() {
         return id;
     }

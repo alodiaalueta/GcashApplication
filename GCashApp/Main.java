@@ -41,10 +41,13 @@ public class Main {
     }
 
     private static void showHomeDashboard() {
-        System.out.println("\n    HOME DASHBOARD");
+        System.out.println("\n===========================");
+        System.out.println("     ~ HOME DASHBOARD ~");
+        System.out.println("===========================");
         System.out.println("\nName: " + UserAuthentication.currentUser.getName());
         System.out.println("Mobile Number: " + UserAuthentication.currentUser.getNumber());
-        System.out.println("\n1. Cash In");
+        System.out.println("\n*************************");
+        System.out.println("1. Cash In");
         System.out.println("2. Cash Transfer");
         System.out.println("3. Transaction History");
         System.out.println("4. My Account");
