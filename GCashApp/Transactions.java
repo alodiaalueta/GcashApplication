@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Transactions {
     public static void displayTransactions(ArrayList<Transaction> transactions) {
         System.out.println("\n===========================");
-        System.out.println("    ~ TRANSACTION HISTORY ~");
+        System.out.println("  ~ TRANSACTION HISTORY ~");
         System.out.println("===========================");
-        System.out.printf("%-15s %-20s %-25s %-20s%n",
+        System.out.printf("%-15s %-15s %-25s %-20s%n",
             "Amount", "Type", "Recipient Email", "Status");
 
         String me = UserAuthentication.currentUser.getId();
@@ -27,7 +27,7 @@ public class Transactions {
                     }
                     recipientEmail = (rec != null) ? rec.getEmail() : "";
                 }
-                System.out.printf("%-10.2f %-15s %-20s %-15s%n",
+                System.out.printf("%-15.2f %-15s %-25s %-15s%n",
                     t.getAmount(), status, recipientEmail, status);
             }
         }

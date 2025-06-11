@@ -44,9 +44,9 @@ public class Main {
         System.out.println("\n===========================");
         System.out.println("     ~ HOME DASHBOARD ~");
         System.out.println("===========================");
-        System.out.println("\nName: " + UserAuthentication.currentUser.getName());
+        System.out.println("Name: " + UserAuthentication.currentUser.getName());
         System.out.println("Mobile Number: " + UserAuthentication.currentUser.getNumber());
-        System.out.println("\n*************************");
+        System.out.println("***************************");
         System.out.println("1. Cash In");
         System.out.println("2. Cash Transfer");
         System.out.println("3. Transaction History");

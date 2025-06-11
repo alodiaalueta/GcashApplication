@@ -7,13 +7,15 @@ public class CashIn {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void cashInMenu(ArrayList<Transaction> transactions) {
-        System.out.println("\n            CASH IN \n");
+        System.out.println("\n===========================");
+        System.out.println("       ~ CASH IN ~");
+        System.out.println("===========================");
 
         ArrayList<UserAuthentication.User> users = UserAuthentication.getUsers();
         UserAuthentication.User current = UserAuthentication.currentUser;
 
         
-        System.out.println("\n CASH IN FROM ");
+        System.out.println("* Cash In From *  ");
         System.out.print("Enter Account ID: ");
         String accId = scanner.nextLine().trim();
         System.out.print("Enter PIN: ");
@@ -24,7 +26,7 @@ public class CashIn {
         try {
             amount = Double.parseDouble(scanner.nextLine().trim());
         } catch (NumberFormatException e) {
-            System.out.println("Invalid amount.");
+            System.out.println("\n >> Invalid amount.");
             return;
         }
 
@@ -38,7 +40,7 @@ public class CashIn {
 
         if (found != null) {
             if (found.getBalance() < amount) {
-                System.out.println("FAILED! INSUFFICIENT FUNDS IN SOURCE ACCOUNT");
+                System.out.println("\n >> FAILED! INSUFFICIENT FUNDS IN SOURCE ACCOUNT");
                 return;
             }
 
@@ -57,9 +59,9 @@ public class CashIn {
                 found.getId(),       
                 "CASH_IN"
             ));
-            System.out.println("Cash In Successful!");
+            System.out.println("\n >> CASH IN SUCCESSFUL!");
         } else {
-            System.out.println("FAILED! NON EXISTING ACCOUNT");
+            System.out.println("\n >> FAILED! NON EXISTING ACCOUNT");
         }
     }
 }

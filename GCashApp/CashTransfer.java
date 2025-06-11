@@ -8,9 +8,11 @@ public class CashTransfer {
 
     public static void transfer(ArrayList<Transaction> transactions) {
         String txId = "TX" + System.currentTimeMillis();
-        System.out.println("\n" + txId + "\n");
-        System.out.println("      CASH TRANSFER \n");
-
+        System.out.println("\n===========================");
+        System.out.println("Transaction ID: " + txId );
+        System.out.println("===========================");
+        System.out.println("     ~ CASH TRANSFER ~");
+        System.out.println("* Transfer Money to *");
         UserAuthentication.User sender = UserAuthentication.currentUser;
         System.out.print("Enter Mobile Number: ");
         String number = scanner.nextLine().trim();
@@ -25,6 +27,7 @@ public class CashTransfer {
         System.out.println("\nConfirm Transaction");
         System.out.println("a. YES");
         System.out.println("b. NO, PLEASE EXIT");
+        System.out.println("\nChoose Input: ");
         String choice = scanner.nextLine().trim();
 
         if (choice.equalsIgnoreCase("a")) {
@@ -54,7 +57,7 @@ public class CashTransfer {
                 sender.getId(),      
                 "CASH_TRANSFER"
             ));
-            System.out.println("Cash Transfer Successful!");
+            System.out.println("\n >> Cash Transfer Successful!");
         } else {
             System.out.println("HOME DASHBOARD");
         }

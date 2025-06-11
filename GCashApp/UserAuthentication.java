@@ -10,11 +10,11 @@ public class UserAuthentication {
     public static User currentUser = null;
 
     static {
-        users.add(new User("U001", "AC001", "Juan Dela Cruz", "juan@example.com", "09000000000", "0000", 50000));
-        users.add(new User("U002", "AC002", "Maria Clara",    "maria@example.com", "09111111111", "1111", 30000));
-        users.add(new User("U003", "AC003", "Jose Rizal",     "jose@example.com", "09998887766", "1111", 7000));
-        users.add(new User("U004", "AC004", "Andres Bonifacio","andres@example.com","09175556666", "2222", 4000));
-        users.add(new User("U005", "AC005", "Emilio Aguinaldo","emilio@example.com","09179998888", "3333", 6000));
+        users.add(new User("ID01", "ACC01", "Alodia Alueta", "alodia.c.alueta@gmail.com", "09162834555", "0000", 50000000));
+        users.add(new User("ID02", "ACC02", "Marco Yimyaem",    "marcoyimyaem@gmail.com", "09222222222", "2222", 30000));
+        users.add(new User("ID03", "ACC03", "Daniel Kang",     "danielkang@yahoo.com", "09333333333", "3333", 7000));
+        users.add(new User("ID04", "ACC04", "JL Gaspar","jlgaspar@gmail.com","09444444444", "4444", 4000));
+        users.add(new User("ID05", "ACC05", "Steven Kim","stevenkim@gmail.com","09555555555", "5555", 6000));
     }
 
     public static void launchApp() {
