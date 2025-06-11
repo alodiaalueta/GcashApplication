@@ -37,7 +37,18 @@ public class CashIn {
         }
 
         if (found != null) {
+            if (found.getBalance() < amount) {
+                System.out.println("FAILED! INSUFFICIENT FUNDS IN SOURCE ACCOUNT");
+                return;
+            }
+
+            // Deduct from source
+            found.subtractBalance(amount);
+
+            // Add to current user
             current.addBalance(amount);
+
+            // Record transaction
             transactions.add(new Transaction(
                 amount,
                 current.getName(),
