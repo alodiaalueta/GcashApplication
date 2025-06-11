@@ -1,0 +1,34 @@
+package GCashApp;
+
+import java.util.ArrayList;
+
+public class Transactions {
+    public static void displayTransactions(ArrayList<Transaction> transactions) {
+        System.out.println("\n  TRANSACTION HISTORY \n");
+        System.out.printf("%-10s %-15s %-20s %-15s%n",
+            "Amount", "Type", "Recipient Email", "Status");
+
+        String me = UserAuthentication.currentUser.getId();
+        for (Transaction t : transactions) {
+            if (t.getTransferFromId().equals(me) || t.getTransferToId().equals(me)) {
+                String status = t.getType().equals("CASH_IN") ? "CASH IN" : "CASH TRANSFER";
+                String recipientEmail;
+                if (status.equals("CASH_IN")) {
+                    recipientEmail = UserAuthentication.currentUser.getEmail();
+                } else {
+                    UserAuthentication.User rec = null;
+                    for (UserAuthentication.User u : UserAuthentication.getUsers()) {
+                        if (u.getId().equals(t.getTransferToId())) {
+                            rec = u;
+                            break;
+                        }
+                    }
+                    recipientEmail = (rec != null) ? rec.getEmail() : "";
+                }
+                System.out.printf("%-10.2f %-15s %-20s %-15s%n",
+                    t.getAmount(), status, recipientEmail, status);
+            }
+        }
+        
+    }
+}
