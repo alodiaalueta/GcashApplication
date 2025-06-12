@@ -8,7 +8,7 @@ public class Transactions {
         System.out.println("                           ~ TRANSACTION HISTORY ~");
         System.out.println("===============================================================================");
         System.out.printf("%-15s %-15s %-30s %-25s%n",
-            "Amount", "Type", "Recipient Email", "Status");
+            "Amount", "Type", "Recipient Email", "Status: Successful");
 
         String me = UserAuthentication.currentUser.getId();
         for (Transaction t : transactions) {

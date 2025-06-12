@@ -28,8 +28,9 @@ public class Main {
                         UserAuthentication.myAccount();
                         break;
                     case "5":
-                        CheckBalance.displayBalance();
-                        break;
+                            CheckBalance.displayBalance();
+                            break;
+
                     case "6":
                         UserAuthentication.currentUser = null;
                         break;
