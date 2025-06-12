@@ -15,7 +15,7 @@ public class CashIn {
         UserAuthentication.User current = UserAuthentication.currentUser;
 
         
-        System.out.println("* Cash In From *  ");
+        System.out.println("Cash In From...");
         System.out.print("Enter Account ID: ");
         String accId = scanner.nextLine().trim();
         System.out.print("Enter PIN: ");

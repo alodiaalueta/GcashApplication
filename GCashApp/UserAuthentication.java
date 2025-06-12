@@ -38,9 +38,9 @@ public class UserAuthentication {
     }
 
     private static void login() {
-        System.out.println("\n===========================");
-        System.out.println("     ~ EXISTING USER ~");
-        System.out.println("===========================");
+        System.out.println("\n=================================");
+        System.out.println("        ~ EXISTING USER ~");
+        System.out.println("=================================");
         System.out.print("Enter your Number: ");
         String number = scanner.nextLine().trim();
         if (!number.matches("\\d{11}")) {
@@ -73,9 +73,9 @@ public class UserAuthentication {
     }
 
     private static void register() {
-        System.out.println("\n===========================");
-        System.out.println("        ~ NEW USER ~");
-        System.out.println("===========================");
+        System.out.println("\n=================================");
+        System.out.println("           ~ NEW USER ~");
+        System.out.println("=================================");
         System.out.print("Create an ID: ");
         String id = scanner.nextLine().trim();
         System.out.print("Create an Account ID: ");
@@ -106,22 +106,22 @@ public class UserAuthentication {
 
     public static void myAccount() {
         if (currentUser == null) return;
-        System.out.println("\n===========================");
-        System.out.println("       ~ My Account ~");
-        System.out.println("===========================");
-        System.out.println("ID: " + currentUser.getId());
+        System.out.println("\n=====================================");
+        System.out.println("            ~ My Account ~");
+        System.out.println("=====================================");
+        System.out.println("User_ID: " + currentUser.getId());
         System.out.println("Name: " + currentUser.getName());
         System.out.println("Email: " + currentUser.getEmail());
         System.out.println("Number: " + currentUser.getNumber());
-        System.out.println("\n===========================");
-        System.out.println("\nWould you like to Change your PIN?");
+        System.out.println("=====================================");
+        System.out.println("Would you like to Change your PIN?");
         System.out.println("1. YES");
         System.out.println("2. NO, please Exit");
         System.out.println("\nChoose Input: ");
         String choice = scanner.nextLine().trim();
 
         if (choice.equals("1")) {
-            System.out.print("Enter your CURRENT PIN: ");
+            System.out.print("\nEnter your CURRENT PIN: ");
             String oldPin = scanner.nextLine().trim();
             if (oldPin.equals(currentUser.getPin())) {
                 System.out.print("Set NEW PIN (4 digits): ");

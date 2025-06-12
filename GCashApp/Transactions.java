@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Transactions {
     public static void displayTransactions(ArrayList<Transaction> transactions) {
-        System.out.println("\n===============================================================================");
-        System.out.println("                           ~ TRANSACTION HISTORY ~");
-        System.out.println("===============================================================================");
+        System.out.println("\n=================================================================================");
+        System.out.println("                            ~ TRANSACTION HISTORY ~");
+        System.out.println("=================================================================================");
         System.out.printf("%-15s %-15s %-30s %-25s%n",
             "Amount", "Type", "Recipient Email", "Status: Successful");
 

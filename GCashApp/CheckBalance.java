@@ -13,9 +13,9 @@ public class CheckBalance {
         }
 
         // Show current user's balance
-        System.out.println("\n==============================================");
-        System.out.println("       ~ ACCOUNT BALANCE ~");
-        System.out.println("==============================================");
+        System.out.println("\n==============================================================");
+        System.out.println("                     ~ ACCOUNT BALANCE ~");
+        System.out.println("==============================================================");
         System.out.println("NAME: " + UserAuthentication.currentUser.getName());
         System.out.println("TOTAL AMOUNT: ₱" + String.format("%.2f", UserAuthentication.currentUser.getBalance()));
         System.out.println("--------------------------------------------------------------");
@@ -39,7 +39,7 @@ public class CheckBalance {
             printTransactions(myTransactions);
         }
 
-        // Optional search
+        
         System.out.println("\nWould you like to Search User ID?");
         System.out.println("1. Yes");
         System.out.println("2. No, Exit");
@@ -62,9 +62,9 @@ public class CheckBalance {
                 System.out.println("\nNo transactions found for User ID: " + searchUserId);
             } else {
                 System.out.println("\nFiltered Transactions for User ID: " + searchUserId);
-                System.out.println("----------------------------------------------");
-                System.out.println("TRANSACTION NUMBER   AMOUNT      FROM_USER_ID    TO_USER_ID");
-                System.out.println("----------------------------------------------");
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("TRANSACTION NUMBER   AMOUNT      FROM USER_ID    TO USER_ID");
+                System.out.println("--------------------------------------------------------------");
                 printTransactions(filteredTx);
             }
         }

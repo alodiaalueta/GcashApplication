@@ -8,16 +8,16 @@ public class CashTransfer {
 
     public static void transfer(ArrayList<Transaction> transactions) {
         String txId = "TX" + System.currentTimeMillis();
-        System.out.println("\n===========================");
+        System.out.println("\n===================================");
         System.out.println("Transaction ID: " + txId );
-        System.out.println("===========================");
-        System.out.println("     ~ CASH TRANSFER ~");
-        System.out.println("* Transfer Money to *");
+        System.out.println("===================================");
+        System.out.println("       ~ CASH TRANSFER ~");
+        System.out.println("Transfer Money to...");
         UserAuthentication.User sender = UserAuthentication.currentUser;
         System.out.print("Enter Mobile Number: ");
         String number = scanner.nextLine().trim();
         if (!number.matches("\\d{11}")) {
-            System.out.println("Invalid number. Please enter 11 digits.");
+            System.out.println("\nInvalid number. Please enter 11 digits.");
             return;
         }
 
