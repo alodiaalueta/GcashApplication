@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Transactions {
     public static void displayTransactions(ArrayList<Transaction> transactions) {
-        System.out.println("\n===========================");
-        System.out.println("  ~ TRANSACTION HISTORY ~");
-        System.out.println("===========================");
-        System.out.printf("%-15s %-15s %-25s %-20s%n",
+        System.out.println("\n===============================================================================");
+        System.out.println("                           ~ TRANSACTION HISTORY ~");
+        System.out.println("===============================================================================");
+        System.out.printf("%-15s %-15s %-30s %-25s%n",
             "Amount", "Type", "Recipient Email", "Status");
 
         String me = UserAuthentication.currentUser.getId();
         for (Transaction t : transactions) {
             if (t.getTransferFromId().equals(me) || t.getTransferToId().equals(me)) {
-                String status = t.getType().equals("CASH_IN") ? "CASH IN" : "CASH TRANSFER";
+                String status = t.getType().equals("CASH_IN") ? "Cash In" : "Cash Transfer";
                 String recipientEmail;
                 if (status.equals("CASH_IN")) {
                     recipientEmail = UserAuthentication.currentUser.getEmail();
@@ -27,7 +27,7 @@ public class Transactions {
                     }
                     recipientEmail = (rec != null) ? rec.getEmail() : "";
                 }
-                System.out.printf("%-15.2f %-15s %-25s %-15s%n",
+                System.out.printf("%-15.2f %-15s %-30s %-25s%n",
                     t.getAmount(), status, recipientEmail, status);
             }
         }

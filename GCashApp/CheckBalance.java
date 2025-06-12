@@ -40,7 +40,7 @@ public class CheckBalance {
                 System.out.println("No transactions found.");
             }
 
-            //System.out.println("\n1. EXIT");
+            
         } else {
             System.out.println("\nNo user logged in.");
         }

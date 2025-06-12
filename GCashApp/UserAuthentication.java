@@ -117,13 +117,14 @@ public class UserAuthentication {
         System.out.println("\nWould you like to Change your PIN?");
         System.out.println("1. YES");
         System.out.println("2. NO, please Exit");
+        System.out.println("\nChoose Input: ");
         String choice = scanner.nextLine().trim();
 
         if (choice.equals("1")) {
-            System.out.print("Enter your Current PIN: ");
+            System.out.print("Enter your CURRENT PIN: ");
             String oldPin = scanner.nextLine().trim();
             if (oldPin.equals(currentUser.getPin())) {
-                System.out.print("SET NEW PIN (4 digits): ");
+                System.out.print("Set NEW PIN (4 digits): ");
                 String newPin = scanner.nextLine().trim();
                 if (newPin.matches("\\d{4}")) {
                     currentUser.setPin(newPin);
