@@ -35,7 +35,7 @@ public class Main {
                         UserAuthentication.currentUser = null;
                         break;
                     default:
-                        System.out.println("Invalid input. Try again.");
+                        System.out.println("\nUnrecognized Input. Please select a valid option.");
                 }
             }
         }
@@ -43,7 +43,7 @@ public class Main {
 
     private static void showHomeDashboard() {
         System.out.println("\n===========================");
-        System.out.println("     ~ HOME DASHBOARD ~");
+        System.out.println("    ~ GCASH DASHBOARD ~");
         System.out.println("===========================");
         System.out.println("Name: " + UserAuthentication.currentUser.getName());
         System.out.println("Mobile Number: " + UserAuthentication.currentUser.getNumber());

@@ -7,17 +7,15 @@ public class CheckBalance {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void displayBalance() {
-        if (UserAuthentication.currentUser == null) {
+         if (UserAuthentication.currentUser == null) {
             System.out.println("\nNo user logged in.");
             return;
         }
-
-        // Show current user's balance
         System.out.println("\n==============================================================");
         System.out.println("                     ~ ACCOUNT BALANCE ~");
         System.out.println("==============================================================");
         System.out.println("NAME: " + UserAuthentication.currentUser.getName());
-        System.out.println("TOTAL AMOUNT: ₱" + String.format("%.2f", UserAuthentication.currentUser.getBalance()));
+        System.out.println("TOTAL AMOUNT: ₱ " + String.format("%.2f", UserAuthentication.currentUser.getBalance()));
         System.out.println("--------------------------------------------------------------");
         System.out.println("                     TRANSACTION HISTORY");
         System.out.println("--------------------------------------------------------------");

@@ -14,54 +14,72 @@ public class CashIn {
         ArrayList<UserAuthentication.User> users = UserAuthentication.getUsers();
         UserAuthentication.User current = UserAuthentication.currentUser;
 
-        
-        System.out.println("Cash In From...");
+        System.out.println("Choose Where to Receive Money From...");
         System.out.print("Enter Account ID: ");
         String accId = scanner.nextLine().trim();
-        System.out.print("Enter PIN: ");
-        String pin = scanner.nextLine().trim();
-        System.out.print("Enter Amount: ");
-        double amount;
 
+        if (accId.equals(current.getAccountId())) {
+            System.out.println("\n>> Transaction failed: You cannot cash in from your own account.");
+            return;
+        }
+
+        System.out.print("Enter PIN Number: ");
+        String pin = scanner.nextLine().trim();
+
+        if (!pin.matches("\\d{4}")) {
+            System.out.println("\n>> Wrong input: PIN Number must be exactly 4 digits.");
+            return;
+        }
+
+        System.out.print("Enter Amount: ₱ ");
+        double amount;
         try {
             amount = Double.parseDouble(scanner.nextLine().trim());
         } catch (NumberFormatException e) {
-            System.out.println("\n >> Invalid amount.");
+            System.out.println("\n>> Invalid input: Amount should only contain numbers.");
+            return;
+        }
+
+        if (amount <= 0) {
+            System.out.println("\n>> Invalid amount. Please enter an amount greater than ₱0.");
             return;
         }
 
         UserAuthentication.User found = null;
         for (UserAuthentication.User u : users) {
-            if (u.getAccountId().equals(accId) && u.getPin().equals(pin)) {
-                found = u;
-                break;
+            if (u.getAccountId().equals(accId)) {
+                if (u.getPin().equals(pin)) {
+                    found = u;
+                    break;
+                } else {
+                    System.out.println("\n>> Transaction failed: PIN Number does not match.");
+                    return;
+                }
             }
         }
 
-        if (found != null) {
-            if (found.getBalance() < amount) {
-                System.out.println("\n >> FAILED! INSUFFICIENT FUNDS IN SOURCE ACCOUNT");
-                return;
-            }
-
-            
-            found.subtractBalance(amount);
-
-            
-            current.addBalance(amount);
-
-           
-            transactions.add(new Transaction(
-                amount,
-                current.getName(),
-                current.getAccountId(),
-                current.getId(),     
-                found.getId(),       
-                "CASH_IN"
-            ));
-            System.out.println("\n >> CASH IN SUCCESSFUL!");
-        } else {
-            System.out.println("\n >> FAILED! NON EXISTING ACCOUNT");
+        if (found == null) {
+            System.out.println("\n>> Transaction failed: Account ID does not exist.");
+            return;
         }
+
+        if (found.getBalance() < amount) {
+            System.out.println("\n>> Transaction failed: Insufficient funds.");
+            return;
+        }
+
+        found.subtractBalance(amount);
+        current.addBalance(amount);
+
+        transactions.add(new Transaction(
+            amount,
+            current.getName(),
+            current.getAccountId(),
+            current.getId(),
+            found.getId(),
+            "CASH_IN"
+        ));
+
+        System.out.println("\n>> Cash-In Successful");
     }
 }

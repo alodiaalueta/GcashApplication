@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserAuthentication {
+    
     public static ArrayList<User> users = new ArrayList<>();
     public static Scanner scanner = new Scanner(System.in);
     public static User currentUser = null;
@@ -32,7 +33,7 @@ public class UserAuthentication {
             } else if (choice.equals("2")) {
                 register();
             } else {
-                System.out.println("\n>> Invalid option. Please try again.");
+                System.out.println("\n>> Unrecognized input. Please select a valid option.");
             }
         }
     }
@@ -41,17 +42,17 @@ public class UserAuthentication {
         System.out.println("\n=================================");
         System.out.println("        ~ EXISTING USER ~");
         System.out.println("=================================");
-        System.out.print("Enter your Number: ");
+        System.out.print("Enter your Mobile Number: ");
         String number = scanner.nextLine().trim();
         if (!number.matches("\\d{11}")) {
-            System.out.println("\n>> Invalid number. Must be 11 digits.");
+            System.out.println("\n>> Invalid Mobile Number entered. It must be exactly 11 digits.");
             return;
         }
 
-        System.out.print("Enter your PIN: ");
+        System.out.print("Enter your PIN Number: ");
         String pin = scanner.nextLine().trim();
         if (!pin.matches("\\d{4}")) {
-            System.out.println("\n>> Invalid PIN. Must be 4 digits.");
+            System.out.println("\n>> Failed: 4-digit PIN Number is required.");
             return;
         }
 
@@ -65,44 +66,69 @@ public class UserAuthentication {
              && u.getAccountId().equals(accountId)) 
             {
                 currentUser = u;
-                System.out.println("\n>> SUCCESSFUL");
+                System.out.println("\n>> You have successfully logged in.");
                 return;
             }
         }
-        System.out.println("\n>> WRONG ID");
+        System.out.println("\n>> Login failed: Incorrect Mobile/PIN/AccountID entered.");
     }
 
     private static void register() {
-        System.out.println("\n=================================");
-        System.out.println("           ~ NEW USER ~");
-        System.out.println("=================================");
-        System.out.print("Create an ID: ");
-        String id = scanner.nextLine().trim();
-        System.out.print("Create an Account ID: ");
-        String accountId = scanner.nextLine().trim();
-        System.out.print("Enter your Full Name: ");
-        String name = scanner.nextLine().trim();
-        System.out.print("Enter your Email: ");
-        String email = scanner.nextLine().trim();
-        
-        System.out.print("Enter your Number: ");
-        String number = scanner.nextLine().trim();
-        if (!number.matches("\\d{11}")) {
-            System.out.println("\n>> FAILED (WRONG NUMBER)");
-            return;
-        }
-        System.out.print("Create PIN: ");
-        String pin = scanner.nextLine().trim();
-        if (!pin.matches("\\d{4}")) {
-            System.out.println("\n>> FAILED (4 PIN NUMBERS REQUIRED)");
-            return;
-        }
+    System.out.println("\n=================================");
+    System.out.println("           ~ NEW USER ~");
+    System.out.println("=================================");
 
-        User u = new User(id, accountId, name, email, number, pin, 0);
-        users.add(u);
-        currentUser = u;
-        System.out.println("\n>> SUCCESSFUL");
+    System.out.print("Create a User ID: ");
+    String id = scanner.nextLine().trim();
+    for (User u : users) {
+        if (u.getId().equalsIgnoreCase(id)) {
+            System.out.println("\n>> Registration failed: User ID already exists.");
+            return;
+        }
     }
+
+    System.out.print("Create an Account ID: ");
+    String accountId = scanner.nextLine().trim();
+    for (User u : users) {
+        if (u.getAccountId().equalsIgnoreCase(accountId)) {
+            System.out.println("\n>> Registration failed: Account ID already exists.");
+            return;
+        }
+    }
+
+    System.out.print("Enter your Full Name: ");
+    String name = scanner.nextLine().trim();
+
+    System.out.print("Enter your Email: ");
+    String email = scanner.nextLine().trim();
+
+    System.out.print("Enter your Mobile Number: ");
+    String number = scanner.nextLine().trim();
+    if (!number.matches("\\d{11}")) {
+        System.out.println("\n>> Invalid mobile number entered. It must be exactly 11 digits.");
+        return;
+    }
+    for (User u : users) {
+        if (u.getNumber().equals(number)) {
+            System.out.println("\n>> Registration failed: Mobile Number already exists.");
+            return;
+        }
+    }
+
+    System.out.print("Create PIN: ");
+    String pin = scanner.nextLine().trim();
+    if (!pin.matches("\\d{4}")) {
+        System.out.println("\n>> Failed: 4-digit PIN Number is required.");
+        return;
+    }
+
+   
+    User u = new User(id, accountId, name, email, number, pin, 0);
+    users.add(u);
+    currentUser = u;
+    System.out.println("\n>> Your account has been successfully created.");
+}
+
 
     public static void myAccount() {
         if (currentUser == null) return;
@@ -114,26 +140,26 @@ public class UserAuthentication {
         System.out.println("Email: " + currentUser.getEmail());
         System.out.println("Number: " + currentUser.getNumber());
         System.out.println("=====================================");
-        System.out.println("Would you like to Change your PIN?");
+        System.out.println("Would you like to Change your PIN Number?");
         System.out.println("1. YES");
         System.out.println("2. NO, please Exit");
         System.out.println("\nChoose Input: ");
         String choice = scanner.nextLine().trim();
 
         if (choice.equals("1")) {
-            System.out.print("\nEnter your CURRENT PIN: ");
+            System.out.print("\nEnter your CURRENT PIN Number: ");
             String oldPin = scanner.nextLine().trim();
             if (oldPin.equals(currentUser.getPin())) {
-                System.out.print("Set NEW PIN (4 digits): ");
+                System.out.print("Set NEW PIN Number (4 digits): ");
                 String newPin = scanner.nextLine().trim();
                 if (newPin.matches("\\d{4}")) {
                     currentUser.setPin(newPin);
-                    System.out.println("\n>> SUCCESSFUL");
+                    System.out.println("\n>> You have successfully changed your PIN Number.");
                 } else {
-                    System.out.println("\n >> WRONG PIN, 4 PIN NUMBERS REQUIRED");
+                    System.out.println("\n >> Failed: 4-digit PIN Number is required.");
                 }
             } else {
-                System.out.println("\n >> WRONG CURRENT PIN");
+                System.out.println("\n >> The current PIN Number you entered is incorrect.");
             }
         }
     }
